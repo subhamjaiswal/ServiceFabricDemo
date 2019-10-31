@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ECommerceProductCatalog\ECommerceProductCatalog.csproj" />
+    <ProjectReference Include="..\UserActor.Interfaces\UserActor.Interfaces.csproj" />
   </ItemGroup>
 
 </Project>
