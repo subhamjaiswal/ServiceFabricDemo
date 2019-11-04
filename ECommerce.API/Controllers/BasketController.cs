@@ -22,7 +22,7 @@ namespace ECommerce.API.Controllers
         {
             IUserActor actor = GetActor(userId);
 
-            Dictionary<Guid, int> products = await actor.GetBasket();
+           BasketItem[]  products = await actor.GetBasket();
 
             return new ApiBasket()
             {
@@ -30,8 +30,8 @@ namespace ECommerce.API.Controllers
                 Items = products.Select(
                     p => new ApiBasketItem()
                     {
-                        ProductId = p.Key.ToString(),
-                        Quantity = p.Value
+                        ProductId = p.ProductId.ToString(),
+                        Quantity = p.Quantity
                     }).ToArray()
             };
 

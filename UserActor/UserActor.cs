@@ -47,17 +47,23 @@ namespace UserActor
             }
         }
 
-        public async Task<Dictionary<Guid, int>> GetBasket()
+        public async Task<BasketItem[]> GetBasket()
         {
-            var result = new Dictionary<Guid, int>();
+            var result = new List<BasketItem>();
             var ProductIds = await StateManager.GetStateNamesAsync();
 
             foreach(var productid in ProductIds)
             {
                 int quantity = await StateManager.GetStateAsync<int>(productid);
-                result.Add(new Guid(productid), quantity);
+                var basket = new BasketItem()
+                {
+                    ProductId = new Guid(productid),
+                    Quantity = quantity
+
+                };
+                result.Add(basket);
             }
-            return result;
+            return result.ToArray();
 
         }
 

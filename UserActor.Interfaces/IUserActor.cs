@@ -19,7 +19,7 @@ namespace UserActor.Interfaces
        
        
         Task AddToBasket(Guid productId, int quantity);
-        Task<Dictionary<Guid, int>> GetBasket();
+        Task<BasketItem[]> GetBasket();
 
         Task ClearBasket();
     }
